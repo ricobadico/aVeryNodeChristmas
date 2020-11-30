@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html> 
+	<head>
+		<title>Travel Experts</title>
+		
+		<link rel="stylesheet" href="reset.css">
+		<link rel="stylesheet" href="styles.css">
+		<link rel="icon" href="images/icon.png" />
+			
+		<meta charset="UTF-8">
+		<meta name="description" content="Travel Agency" />
+		<meta name="keywords" content="flight, booking, travel, vacation" />
+		<meta name="author" content="Eric Biondic" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+		<!-- Data Arrays -->
+		<script>
+
+			const imageArray = [
+				{
+					desc: "Maligne Sunset",
+					src: "images/maligne2.jpg"
+				},
+				{
+					desc: "Vigilant Chrome Bear",
+					src: "images/chromebear.jpg"
+				},
+				{
+					desc: "West Japan",
+					src: "images/lethbridge.jpg"
+				},
+				{
+					desc: "Wee Mountaineer",
+					src: "images/chip.JPG"
+				}
+			];
+
+			const linkArray= [
+				"https://www.travelalberta.com/ca/listings/moraine-lake-1209/",
+				"https://jetsetterssuitcase.com/number-1-attraction-in-banff-alberta-the-gondola-ride/",
+				"https://www.nikkayuko.com/",
+				"https://video.nationalgeographic.com/video/news/0000014d-e33c-d8b5-af7f-f7fd36830000"
+			];
+		</script>
+
+</head>
+	
+<body>
+	
+	<!--Preloader-  Thanks to Ihatetomatoes at https://youtu.be/blHZ6zCYvMM for help with initial structuring -->
+	<div class="introWrap">
+		<div class="loadWrap">
+			<img class="loadLogo" src="images/sunlogo_animated (1).svg" alt="Logo animation courtesy of Vivus" />
+			<p class="loadLabel">Loading..</p>
+
+			<img class="planeAnimation" src="images/air6 by tsaoja.svg" alt="" />
+
+			<div class="loadRevealer revealTop" ></div>                    
+			<div class="loadRevealer revealBottom" ></div>
+
+			<img class="introSplash" src="images/mizrach-beach.jpg" alt="" />
+			<h1 class="introText">Live. Your Way</h1>
+		</div>
+	 </div>   
+	
+	 <!-- Header -->
+	<header>
+		<a href="index.html">
+			<div class="titleContainer">
+				<img class="logo" src="images/logo.png" />
+				<h1>Welcome to Travel Experts</h1>
+			</div>
+		</a>
+	</header>
+	
+	<!-- Main Content -->
+	<section>
+		
+		<h2>Providing Albertans with all their travel needs.</h2>
+
+		<div class="photoContainer">
+			<div class="imgCard">
+				<img src="images/maligne.jpg" />
+			</div>
+			<div class="imgCard">
+				<img src="images/chichen.jpg" />
+			</div>
+			<div class="imgCard">
+				<img src="images/louise.jpg" />
+			</div>
+		</div>
+
+		<h1 style="margin: 0 auto;">Trip of the Day: Majestic Southern Alberta</h1>
+
+		<!-- JS-Made Photo Containers -->
+		<div class="photoContainer smallPhotoContainer">
+			<script>
+				for(i in imageArray){
+					//Each item in imageArray gets its own container div with mouseover
+					document.write('<div class="imgCard" onmouseenter=showImage(this) onmouseleave=hideImage(this)>')
+
+					//Then within that div loads the image but sets its display to none, along with a description
+					// The on-click openLink function receives the current index, as it is assumed to match the corresponding index of the separate linkArray entry
+					document.write(`<img src=${imageArray[i].src} alt=${imageArray[i].desc} style="display:none"; onclick=openLink(linkArray,${i}) />`
+						+ '<p>' + imageArray[i].desc + '</p>'); 
+					document.write('</div>')
+				}
+			</script>
+		</div>
+		
+		<!-- Contact Container -->
+		<div class="container" style="width:35%; padding: 20px 0 0;">
+			<a href="contact.html">
+				<img src="images/contact.png" />
+				<p>Contact</p>
+			</a>
+			<a href="register.html">
+				<img src="images/register.png" />
+				<p>Register</p>
+			</a>
+		</div>
+		
+		<div style="text-align:center;">
+			<p>Copyright &copy SAIT 2020</p>
+		</div>
+		
+	</section>
+	
+	<!-- Main scripts for the page - put at the end so their loading doesn't impede page visual load -->
+	<script src="index.js"></script>
+
+</body>
+</html>
