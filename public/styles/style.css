@@ -1,10 +1,61 @@
 
-header{
-    background-color: lemonchiffon;
-    height: 100px;
-    text-align: center;
-    font-size: xx-large;
-    padding:1em;
-    margin: 0 0 2em;
+* {
+    box-sizing: border-box;
+    font-style: italic;
 }
 
+html{
+    height:100%;
+}
+
+body {
+    display: grid;
+    grid-template-rows: 5em auto 3em;
+    row-gap: 1em;
+    height: 100%;
+    max-width: 60em;
+    background-image: url(../media/jeshoots-com-7VOyZ0-iO0o-unsplash.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0px auto;
+    padding: 1em 0px;
+    background-repeat: no-repeat;
+}
+
+header, main, footer {
+    display: flex;
+    box-shadow: rgba(219, 219, 219, 0.7) 2px 2px 5px;
+    background: rgba(248, 248, 248, 0.7);
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 0px 1em;
+}
+
+header {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    background: rgba(248, 248, 248, 0.3);
+}
+
+main {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    overflow: visible;
+}
+
+footer {
+    align-items: center;
+    justify-content: center;
+}

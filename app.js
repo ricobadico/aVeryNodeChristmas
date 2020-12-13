@@ -1,103 +1,40 @@
 const express = require("express");
+const mongoose = require("mongoose");
+const path = require("path");
+const { greet } = require("./greet");
 
 const app = express();
-const port = 8000;
 
-// Using Handlebars as template engine
-const handlebars = require("express-handlebars");
-app.set('view engine', 'handlebars');
+// Connect to MongoDB
+mongoose.connect('mongodb://127.0.0.1/santaMongo', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
+});
+const db = mongoose.connection;
 
-//Sets handlebars configurations (we will go through them later on)
-app.engine('handlebars', handlebars({ 
-    extname: "handlebars",
-    defaultLayout: "",
-    layoutsDir: __dirname + '/views/layouts',
-    }));
+// Bind connection to errorevent(to get notification of connection errors)
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-// Allows for parsing request body in the form x-wwww-form-urlencoded
+// Not sure what this does. path.join puts the slash in as separator
+app.set("views", path.join(__dirname, "views"));
+
+app.set("view engine", "pug");
+
+app.use(express.static('public'));
+
+app.listen(8000, () => {
+    console.log("Server started on port 8000");
+});
+
 app.use(express.urlencoded({ extended: true }));
 
-//  Directs all style references to the styles directory
-app.use(express.static("styles"));
-app.use(express.static("public"));
-
-const agencyList = {Agencies: [
-    { 
-        agencyName: "Calgary Crowfoot Branch",
-        agencyEmail: "yyc@travelexperts.ca",
-        agencyAddress: "8665 Nose Hill Dr NW Calgary, AB T3G 5T3",
-        agencyNumber: "(403) 992-7374",
-        agents: [
-            {
-                name: "Beth",
-                title: "Travel Consultant",
-                info: "Favourite Destination Visted: Moscow, Russia",
-                phoneNumber: "(403) 123 - 4567"
-            },
-            {
-                name: "Townes",
-                title: "Travel Consultant",
-                info: "Favourite Destination Visted: Las Vegas, Nevada",
-                phoneNumber: "(403) 765 - 4321"
-            },
-            {
-                name: "Benny",
-                title: "Casual Chess Player",
-                info: "Favourite Destination Visted: New York, New York",
-                phoneNumber: "(403) 987 - 6543"
-            },
-        ]
-    },
-    { 
-        agencyName: "Other Branch",
-        agencyEmail: "yyc@travelexperts.ca",
-        agencyAddress: "8665 Nose Hill Dr NW Calgary, AB T3G 5T3",
-        agencyNumber: "(403) 992-7374",
-        agents: [
-            {
-                name: "Townes",
-                title: "Travel Consultant",
-                info: "Favourite Destination Visted: Las Vegas, Nevada",
-                phoneNumber: "(403) 765 - 4321"
-            },
-            {
-                name: "Benny",
-                title: "Casual Chess Player",
-                info: "Favourite Destination Visted: New York, New York",
-                phoneNumber: "(403) 987 - 6543"
-            },
-            {
-                name: "Borgov",
-                title: "Travel Consultant",
-                info: "Favourite Destination Visted: Paris, France",
-                phoneNumber: "(403) 345 - 6789"
-            }
-        ]
-    },
-]};
-
-
-
-app.get("/contacts", (req,res) => {
-    res.render('contact.handlebars', agencyList);
+// Routes
+app.get('/', (req, res) => {
+    res.render("index", {greeting: `${greet()}` });
 });
 
-app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/views/contact.html");
-})
-
-app.post("/postcustomer", (req,res) => {
-    console.log(req.body);
-    res.send("Received")
-})
-
-// Default case to go to 404 page if no valid path given
-app.use((req, res) => {
-    res.status(404).sendFile(__dirname + "/views/404.html");
-});
-
-// Listen on given port
-app.listen(port, (err) => {
-    if (err) throw err;
-    console.log(`Server online on port ${port}`);
+app.get('/contact', (req, res) => {
+    res.render("contact");
 });

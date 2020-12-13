@@ -1,10 +1,10 @@
 // Array of greetings to pull from
 const greetings = [
-    "Hello.",
-    "Good day to you!",
-    "Welcome, friend.",
-    "Prepare yourself for a brand new web browsing experience.",
-    "Oh hi! Didn't see you there."
+    "Tidings of Comfort and Joy",
+    "Ho ho hello!",
+    "Happy Holidays!",
+    "Jingle all the way!",
+    "Merry Christmas!"
 ];
 
 exports.greet = function randomGreeting() {

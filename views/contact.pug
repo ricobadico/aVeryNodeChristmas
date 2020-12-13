@@ -1,0 +1,89 @@
+extends layout.pug
+
+block header
+    h1 Contact Santa
+    link(rel="stylesheet" href="/styles/contactStyle.css")
+
+    
+block content
+   
+    .contact-container
+
+        h2 Please provide Santa with some information
+        h3(style="margin-top:0") Required fields are marked with an *
+        if errors
+            h3(class="badLabel") You need to make sure you give all your info correctly. Santa is counting on you!
+
+        form(method="POST" action="contactPOST")
+
+            //- For each input, do a check to see if errors have been passed in and if there is a specific error for that input
+            //- Wanted to do this with JS in a for loop, but had trouble since JS runs client-side and pug server-side
+            if errors && errors.name
+                p.error-line #{errors.name}
+                label(for='nameInput' class="badLabel") *What is your name?
+                input#nameInput(type='text' name="name" placeholder='Enter your first name' class="badInput")
+            else
+                label(for='nameInput') *What is your name?
+                input#nameInput(type='text' name="name" placeholder='Enter your first name')
+            
+            if errors && errors.email
+                p.error-line #{errors.email}
+                label(for='emailInput' class="badLabel") What is your email?
+                input#nameInput(type="text" name="email" placeholder='Enter your email' class="badInput")
+            else
+                label(for='emailInput') What is your email?
+                input#nameInput(type="text" name="email" placeholder='Enter your email')
+
+            if errors && errors.age
+                p.error-line #{errors.age}
+                label(for='ageInput' class="badLabel") How old are you?
+                input#ageInput(type='text' name="age" placeholder='Enter your age' class="badInput")
+            else
+                label(for='ageInput') How old are you?
+                input#ageInput(type='text' name="age" placeholder='Enter your age')
+
+            if errors && errors.job
+                p.error-line #{errors.job}
+                label(for='jobInput' class="badLabel") *What do you like to do?
+                input#jobInput(type='text' name="job" placeholder='Enter an activity' class="badInput")
+            else   
+                label(for='jobInput') *What do you like to do?
+                input#jobInput(type='text' name="job" placeholder='Enter an activity')
+
+            if errors && errors.descriptor
+                p.error-line #{errors.descriptor}
+                label(for='descriptorInput' class="badLabel") *What one word describes you best?
+                input#descriptorInput(type='text' name="descriptor" placeholder='Enter an adjective' class="badInput")
+            else
+                label(for='descriptorInput') *What one word describes you best?
+                input#descriptorInput(type='text' name="descriptor" placeholder='Enter an adjective')
+            
+            if errors && errors.gift
+                p.error-line #{errors.gift}
+                label(for='giftInput' class="badLabel") *What do you want for Christmas?
+                input#giftInput(type='text' name="gift" placeholder='Enter a gift' class="badInput")
+            else
+                label(for='giftInput') *What do you want for Christmas?
+                input#giftInput(type='text' name="gift" placeholder='Enter a gift')
+            
+            if errors && errors.naughtyOrNice
+                p.error-line #{errors.naughtyOrNice}
+                .badLabel Have you been a good little boy or girl?
+                .form-radio
+                    .radio
+                        input#yesInput(type='radio' name="naughtyOrNice" value="nice")
+                        label(for='yesInput' class="badLabel") Yes 
+                    .radio
+                        input#noInput(type='radio' name="naughtyOrNice" value="naughty")
+                        label(for='noInput' class="badLabel") Well... 
+            else
+                | Have you been a good little boy or girl?
+                .form-radio
+                    .radio
+                        input#yesInput(type='radio' name="naughtyOrNice" value="nice")
+                        label(for='yesInput') Yes 
+                    .radio
+                        input#noInput(type='radio' name="naughtyOrNice" value="naughty")
+                        label(for='noInput') Well... 
+
+            button.submit-button(type='submit') Submit

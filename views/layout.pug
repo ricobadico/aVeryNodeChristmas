@@ -1,0 +1,22 @@
+doctype html
+html
+    head
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")/
+        title Christmastown - #{title}
+        link(rel="stylesheet" href="/styles/style.css")
+    body
+        header
+            block header
+                h1 #{greeting}
+            nav
+                a(href="/") Home
+                a(href="/about") About
+                a(href="/contact") Contact
+        main
+            block content
+                h1 Ya #{interjection}!!!
+        footer Copyright &#169; SAIT 2020
+        script(src='https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js')
+        script.
+            Snowflakes();
+        
