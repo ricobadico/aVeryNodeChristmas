@@ -46,3 +46,7 @@ h3{
     filter: brightness(1.03);
     transform: scale(1.005);
 }
+
+.hint{
+    text-align: center;
+}

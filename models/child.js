@@ -4,7 +4,7 @@ const uniqueValidator=require("mongoose-unique-validator");
 // Define schema for child collection
 const childSchema = new mongoose.Schema({
     name: { type: String, required: "Santa needs your name, pal!" },
-    email: { type: String, 
+    email: { type: String, unique: "We have that email, get your own!",
         validate: {
             validator:function(v) {
                 return /^[a-z0-9._%+-]+@([a-z0-9-]+\.)+[a-z]{2,}$/i.test(v);

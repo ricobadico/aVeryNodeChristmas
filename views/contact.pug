@@ -28,7 +28,7 @@ block content
             
             if errors && errors.email
                 p.error-line #{errors.email}
-                label(for='emailInput' class="badLabel") What is your email?
+                label(for='emailInput' class="badLabel") *What is your email?
                 input#nameInput(type="text" name="email" placeholder='Enter your email' class="badInput")
             else
                 label(for='emailInput') What is your email?
@@ -45,10 +45,10 @@ block content
             if errors && errors.job
                 p.error-line #{errors.job}
                 label(for='jobInput' class="badLabel") *What do you like to do?
-                input#jobInput(type='text' name="job" placeholder='Enter an activity' class="badInput")
+                input#jobInput(type='text' name="job" placeholder='Eg. "dance", "play games"' class="badInput")
             else   
                 label(for='jobInput') *What do you like to do?
-                input#jobInput(type='text' name="job" placeholder='Enter an activity')
+                input#jobInput(type='text' name="job" placeholder='Eg. "dance", "sing"')
 
             if errors && errors.descriptor
                 p.error-line #{errors.descriptor}
