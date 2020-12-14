@@ -59,3 +59,7 @@ app.post('/contactPOST', childController.createChild);
 app.get("/displayChildInThanks", (req, res) => {
     childController.getChildData(req, res, req.query.id);
 });
+
+app.get("/list", (req, res) => {
+    childController.getAllChildren(req, res);
+});

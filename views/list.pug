@@ -1,0 +1,22 @@
+extends layout.pug
+
+block header
+    a.no-deco(href="/"): h1.title Current Children!
+    link(rel="stylesheet" href="/styles/listStyle.css")
+
+
+block content
+    h2 Children who contact Santa get added here to his Mongo-driven list
+
+    //- As long as at least one child has been added to the db, all children show up in a list here with their details
+    if !children
+        h2(style="color:red") No children added yet. Go contact Santa!
+    else
+        .child-grid
+            each child of children
+                .content-container
+                    - let descriptor = child.descriptor[0].toUpperCase() + child.descriptor.slice(1).toLowerCase();
+                    p #{descriptor} #{child.name}, age #{child.age}
+                    p Known to #{child.job}, on #{child.naughtyOrNice} list
+                    - let gift = child.naughtyOrNice == "nice" ? child.gift : "coal"
+                    p Gift: #{gift}

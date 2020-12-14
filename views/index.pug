@@ -1,7 +1,7 @@
 extends layout.pug
 
 block header
-    h1.title #{greeting}
+    a.no-deco(href="/"): h1.title #{greeting}
 
     script(src="christmastime.js")
     script.

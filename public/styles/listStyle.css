@@ -1,0 +1,27 @@
+.child-grid {
+    justify-content: center;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 280px);
+    gap: 10px;
+}
+
+.child-grid p{
+    text-align: center;
+}
+
+.content-container{
+    border-radius: 15px;
+}
+
+.content-container:nth-child(2n) {
+    background: rgba(112, 112, 112, 0.3);
+  }
+
+  .content-container:nth-child(2n-1) {
+    background: rgba(180, 180, 180, 0.4);
+  }
+
+  h2{
+      text-align: center;
+  }

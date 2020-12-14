@@ -1,5 +1,5 @@
 const Child = require("../models/child");
-const gis = require("g-i-s"); //Used for grabbing an image in getchildData render
+const getImage = require("g-i-s"); //Used for grabbing an image in getchildData render
 
 // Function for inserting a new child's data into the database
 exports.createChild = (req, res) => {
@@ -22,7 +22,7 @@ exports.createChild = (req, res) => {
             console.log(req.body)
 
             // re-render the contact page with that error data informing the template
-            return res.render("contact", { errors: errorObject, inputs:req.body});
+            return res.render("contact", { errors: errorObject, inputs: req.body});
         }
 
         // In the event we don't have any errors, we redirect to the route that will start rendering the Thank you page
@@ -41,7 +41,7 @@ exports.getChildData = (req, res, id)=> {
         // For some added fun, we get an image based on the document's "gift" value
         // This code is modified from the g-i-s module boilerplate, with some additions from me to return just the url of the first entry
         // The idea is to "I'm feeling lucky" an image based on the "gift" keyword stored in each Child Mongo document 
-        gis(child[0].gift, (error, results) => {
+        getImage(child[0].gift, (error, results) => {
             if (error) {
                 console.log(error);
             }
@@ -54,3 +54,10 @@ exports.getChildData = (req, res, id)=> {
         })
     });
 };
+
+// Pulls whole Child collection for list page
+exports.getAllChildren = (req,res) => {
+    Child.find((err, children) => {
+        res.render("list", { children })
+    });
+}

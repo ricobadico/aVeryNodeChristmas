@@ -68,6 +68,10 @@ footer {
     justify-content: center;
 }
 
+img {
+    border-radius: 15px;
+}
+
 .homeImg{
     width:50%;
     min-width: 300px;
@@ -76,4 +80,13 @@ footer {
 .wide-container{
     display: flex;
     flex: row wrap;
+}
+
+.no-deco{
+    text-decoration: none;
+    color: black;
+}
+
+a{
+    text-decoration: none;
 }
