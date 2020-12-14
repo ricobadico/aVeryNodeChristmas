@@ -19,9 +19,10 @@ exports.createChild = (req, res) => {
                 errorObject[key] = err.errors[key].message
             });
             console.log(errorObject)
+            console.log(req.body)
 
             // re-render the contact page with that error data informing the template
-            return res.render("contact", { errors: errorObject});
+            return res.render("contact", { errors: errorObject, inputs:req.body});
         }
 
         // In the event we don't have any errors, we redirect to the route that will start rendering the Thank you page

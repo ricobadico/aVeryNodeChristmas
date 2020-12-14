@@ -22,9 +22,11 @@ block content
                 p.error-line #{errors.name}
                 label(for='nameInput' class="badLabel") *What is your name?
                 input#nameInput(type='text' name="name" placeholder='Enter your first name' class="badInput")
+            //- If no errors were passed for this input, keep it normal. In the event a valid entry was here before submission,
+            //- it is passed back from req.body to the input value
             else
                 label(for='nameInput') *What is your name?
-                input#nameInput(type='text' name="name" placeholder='Enter your first name')
+                input#nameInput(type='text' name="name" placeholder='Enter your first name' value=(inputs ? inputs.name : ''))
             
             if errors && errors.email
                 p.error-line #{errors.email}
@@ -32,7 +34,7 @@ block content
                 input#nameInput(type="text" name="email" placeholder='Enter your email' class="badInput")
             else
                 label(for='emailInput') What is your email?
-                input#nameInput(type="text" name="email" placeholder='Enter your email')
+                input#nameInput(type="text" name="email" placeholder='Enter your email' value=(inputs ? inputs.email : ''))
 
             if errors && errors.age
                 p.error-line #{errors.age}
@@ -40,7 +42,7 @@ block content
                 input#ageInput(type='text' name="age" placeholder='Enter your age' class="badInput")
             else
                 label(for='ageInput') How old are you?
-                input#ageInput(type='text' name="age" placeholder='Enter your age')
+                input#ageInput(type='text' name="age" placeholder='Enter your age' value=(inputs ? inputs.age : ''))
 
             if errors && errors.job
                 p.error-line #{errors.job}
@@ -48,7 +50,7 @@ block content
                 input#jobInput(type='text' name="job" placeholder='Eg. "dance", "play games"' class="badInput")
             else   
                 label(for='jobInput') *What do you like to do?
-                input#jobInput(type='text' name="job" placeholder='Eg. "dance", "sing"')
+                input#jobInput(type='text' name="job" placeholder='Eg. "dance", "sing"' value=(inputs ? inputs.job : ''))
 
             if errors && errors.descriptor
                 p.error-line #{errors.descriptor}
@@ -56,7 +58,7 @@ block content
                 input#descriptorInput(type='text' name="descriptor" placeholder='Enter an adjective' class="badInput")
             else
                 label(for='descriptorInput') *What one word describes you best?
-                input#descriptorInput(type='text' name="descriptor" placeholder='Enter an adjective')
+                input#descriptorInput(type='text' name="descriptor" placeholder='Enter an adjective' value=(inputs ? inputs.descriptor : ''))
             
             if errors && errors.gift
                 p.error-line #{errors.gift}
@@ -64,7 +66,7 @@ block content
                 input#giftInput(type='text' name="gift" placeholder='Enter a gift' class="badInput")
             else
                 label(for='giftInput') *What do you want for Christmas?
-                input#giftInput(type='text' name="gift" placeholder='Enter a gift')
+                input#giftInput(type='text' name="gift" placeholder='Enter a gift' value=(inputs ? inputs.gift : ''))
             
             if errors && errors.naughtyOrNice
                 p.error-line #{errors.naughtyOrNice}
