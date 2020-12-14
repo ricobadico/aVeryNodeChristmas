@@ -12,8 +12,12 @@ block content
             .content-container
                 h2 Santa Says:
                 p Hmmm.....
-                if naughtyOrNice == nice
-                    p youre good
+                if naughtyOrNice == 'nice'
+                    p #{name}, you darling! You golden child! I see nothing but good in you!
+                    p I polled the elves, and they agree that you are consummately #{descriptor}.
+                    p There are none that #{job} quite like you do, I dare say!
+                    script(src="imageGetter.js")
+                    script.
                 else
                     p you bleak scoundrel
             

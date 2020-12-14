@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 const { greet } = require("./greet");
 const childController = require("./controllers/childController");
-const ChildModel = require("./models/child");
+const Child = require("./models/child");
 
 const app = express();
 
@@ -34,25 +34,28 @@ app.listen(8000, () => {
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
+
+// Home render. Takes a random greeting from greeting module and is injected through pug
 app.get('/', (req, res) => {
-    res.render("index", {greeting: `${greet()}`,  });
+    res.render("index", {greeting: `${greet()}` });
 });
 
-app.get('/contact', (req, res) => {
-    res.render("contact");
-});
-
+// About render
 app.get('/about', (req, res) => {
     res.render("about");
 });
 
+// Contact render
+app.get('/contact', (req, res) => {
+    res.render("contact");
+});
+
+// Contact form inserted into Mongo DB. The callback is defined in the controller for Child objects
 app.post('/contactPOST', childController.createChild);
 
+// Thanks page render, redirected at end of contactPOST. 
+// Id of newly created db entry is passed along to be used for find() function to get that entry
+// This is a little roundabout, but demonstrates controllers that both insert into and pull from the db
 app.get("/displayChildInThanks", (req, res) => {
-    console.log(req.query);
-
-    children.find().toArray((err, items) => {
-        console.log(items)
-    })
-    // res.render("thanks");
+    childController.getChildData(req, res, req.query.id);
 })

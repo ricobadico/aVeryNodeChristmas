@@ -19,5 +19,5 @@ const childSchema = new mongoose.Schema({
 childSchema.plugin(uniqueValidator);
 
 // Use that schema to define the model for the child collection
-const ChildModel = mongoose.model('Child', childSchema);
-module.exports = ChildModel;
+const Child = mongoose.model('Child', childSchema);
+module.exports = Child;
