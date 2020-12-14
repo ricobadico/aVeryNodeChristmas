@@ -37,10 +37,6 @@ exports.getChildData = (req, res, id)=> {
     // We use Collection.find({ filter }, callback) to get just the one child document
     Child.find({ _id: id}, (err, child) => {
 
-        // We then render the thanks page with the data from that .find(). 
-        // Note we use child[0] since find() returns an array (in our case, always with a single entry)
-        console.log(child[0])
-
         // For some added fun, we get an image based on the document's "gift" value
         // This code is modified from the g-i-s module boilerplate, with some additions from me to return just the url of the first entry
         // The idea is to "I'm feeling lucky" an image based on the "gift" keyword stored in each Child Mongo document 
@@ -49,8 +45,9 @@ exports.getChildData = (req, res, id)=> {
                 console.log(error);
             }
             else {
+                // We then render the thanks page with the data from that .find(). 
+                // Note we use child[0] since find() returns an array (in our case, always with a single entry)
                 // We do the render call within the callback of the image getter, so that we only render once it has successfully returned with data
-                console.log(results[0])
                 res.render("thanks", { currentChild: child[0], giftImageSrc: results[0].url });
             }
         })

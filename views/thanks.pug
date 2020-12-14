@@ -1,18 +1,20 @@
 extends layout.pug
 
 block header
-    h1 A Message From Santa
+    h1.title A Message From Santa
     link(rel="stylesheet" href="/styles/thanksStyles.css")
+    script(src="speak.js")
+
 
 
 block content
     .content-container
         .wide-container
-            img(src="/media/judgeSanta.jpg" alt="Image of Santa by Jonathan Meath, CC BY-SA 2.5 <https://creativecommons.org/licenses/by-sa/2.5>, via Wikimedia Commons" width="100%")
+            img.santaImg(src="/media/judgeSanta.jpg" alt="Image of Santa by Jonathan Meath, CC BY-SA 2.5 <https://creativecommons.org/licenses/by-sa/2.5>, via Wikimedia Commons" onclick=`christmasGreet('${currentChild.name}')`)
             .message-container
                 h2 Santa Says:
                 p Hmmm.....
-                if naughtyOrNice == nice
+                if currentChild.naughtyOrNice == "nice"
                     p #{currentChild.name}, you darling! You golden child! I see nothing but good in you!
                     p I polled the elves, and they agree that you are consummately #{currentChild.descriptor}.
                     p There are none that #{currentChild.job} quite like you do, I dare say!
@@ -24,8 +26,9 @@ block content
                 else
                     p #{currentChild.name}, you impish scoundrel! You rube! I have seen your troublesome ways, and I do not like it!
                     p It may shock you to learn that you do not #{currentChild.job} as well as your hubris implies!
-                    p You may indeed be #{currentChild.descriptor}, at least among your questionable friends. But a true child of goodness, you are not.
-                    p Your credentials have been logged in the naughty list database. Instead of a #{currentChild.gift}, you get this pail of bituminous coal:
+                    p You may indeed be #{currentChild.descriptor}, at least among your questionable friends. But a true child of Christmas you are not.
+                    p Your credentials have been logged in the naughty database. Instead of that #{currentChild.gift}, you get this pail of bituminous coal:
                     img(src="media/coal.jpg" class="gift-image" alt="Image of Coal by Thomas Bresson, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons")
+                    h3 Humbug!
             
         h2(class="backButton"): a(href="/") Back

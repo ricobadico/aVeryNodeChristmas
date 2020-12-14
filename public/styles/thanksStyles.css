@@ -37,3 +37,12 @@ h3{
 .backButton {
     margin-top: 0px;
 }
+
+.santaImg {
+    width: 100%;
+}
+
+.santaImg:hover {
+    filter: brightness(1.03);
+    transform: scale(1.005);
+}

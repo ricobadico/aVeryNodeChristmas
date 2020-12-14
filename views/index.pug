@@ -1,7 +1,17 @@
 extends layout.pug
 
 block header
-    h1 #{greeting}
+    h1.title #{greeting}
+
+    script(src="christmastime.js")
+    script.
+        function loadClock(){
+            const christmasClock = document.getElementById("christmasClock")
+            christmasClock.innerHTML = getChristmastime()
+            setInterval( () => {
+                christmasClock.innerHTML = getChristmastime()
+            }, 1000)
+        }
 
 block content
 
@@ -12,14 +22,4 @@ block content
     img(src="/media/techsanta.jpg" class="homeImg" onload="loadClock()")
 
     h3 Santa's jumped on the internet superhighway and he is loving every second
-    
-    script(src="christmastime.js")
-    script.
-        function loadClock(){
-            const christmasClock = document.getElementById("christmasClock")
-            christmasClock.innerHTML = getChristmastime()
-            setInterval( () => {
-            christmasClock.innerHTML = getChristmastime()
-        }, 1000)
-        }
 

@@ -8,6 +8,10 @@ html{
     height:100%;
 }
 
+.title{
+    margin-top:10px;
+}
+
 body {
     display: grid;
     grid-template-rows: 5em auto 3em;

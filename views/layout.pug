@@ -10,12 +10,16 @@ html
                 h1 #{greeting}
             nav
                 a(href="/") Home
+                a(href="/contact") Contact Santa!
                 a(href="/about") About
-                a(href="/contact") Contact
         main
             block content
                 h1 Ya #{interjection}!!!
-        footer Copyright &#169; SAIT 2020
+        footer Copyright &#169; SAIT 2020 --- 
+            span Background photo by 
+                a(href="https://unsplash.com/@jeshoots?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText") JESHOOTS.COM 
+                | on 
+                a(href="https://unsplash.com/wallpapers/events/christmas?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText") Unsplash
         script(src='https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js')
         script.
             Snowflakes();

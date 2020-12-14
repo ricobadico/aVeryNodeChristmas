@@ -1,6 +1,8 @@
+// Pulls the browser's built-in speech synthesis function to say a greeting aloud
+
 function christmasGreet (name) {
-    let utterance = new SpeechSynthesisUtterance(`Merry Christmas, ${name}!`)
+    let utterance = new SpeechSynthesisUtterance(`Merrrrry Christmas ${name}!`)
     var voices = window.speechSynthesis.getVoices()
-    msg.voice = voices[0]
+    utterance.voice = voices[0]
     window.speechSynthesis.speak(utterance)
   }
