@@ -58,4 +58,4 @@ app.post('/contactPOST', childController.createChild);
 // This is a little roundabout, but demonstrates controllers that both insert into and pull from the db
 app.get("/displayChildInThanks", (req, res) => {
     childController.getChildData(req, res, req.query.id);
-})
+});

@@ -1,0 +1,39 @@
+.wide-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50%, 300px));
+    column-gap: 20px;
+    padding:20px;
+}
+
+.content-container{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content-container h2 {
+    text-align: center;
+}
+
+p {
+    font-size: large;
+}
+.message-container{
+    width:100%;
+    padding-right:10px;
+}
+
+.gift-image{
+    width:200px;
+    display:block;
+    margin: auto;
+}
+
+h3{
+    text-align: center;
+}
+
+.backButton {
+    margin-top: 0px;
+}
