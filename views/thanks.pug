@@ -1,6 +1,6 @@
 extends layout.pug
 
-block head
+block header
     h1 About
     link(rel="stylesheet" href="/styles/aboutStyle.css")
 
@@ -8,9 +8,13 @@ block head
 block content
     .content-container
         .wide-container
-            img(src="judgeSanta" alt="Image of Santa by Jonathan Meath, CC BY-SA 2.5 <https://creativecommons.org/licenses/by-sa/2.5>, via Wikimedia Commons" width="300px")
+            img(src="/media/judgeSanta.jpg" alt="Image of Santa by Jonathan Meath, CC BY-SA 2.5 <https://creativecommons.org/licenses/by-sa/2.5>, via Wikimedia Commons" width="300px")
             .content-container
                 h2 Santa Says:
                 p Hmmm.....
+                if naughtyOrNice == nice
+                    p youre good
+                else
+                    p you bleak scoundrel
             
         h2: a(href="/") Back

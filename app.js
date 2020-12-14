@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const { greet } = require("./greet");
+const childController = require("./controllers/childController");
+const ChildModel = require("./models/child");
 
 const app = express();
 
@@ -23,6 +25,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
 app.use(express.static('public'));
+app.use(express.static('scripts', { extensions: ".js"}))
 
 app.listen(8000, () => {
     console.log("Server started on port 8000");
@@ -32,9 +35,24 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.get('/', (req, res) => {
-    res.render("index", {greeting: `${greet()}` });
+    res.render("index", {greeting: `${greet()}`,  });
 });
 
 app.get('/contact', (req, res) => {
     res.render("contact");
 });
+
+app.get('/about', (req, res) => {
+    res.render("about");
+});
+
+app.post('/contactPOST', childController.createChild);
+
+app.get("/displayChildInThanks", (req, res) => {
+    console.log(req.query);
+
+    children.find().toArray((err, items) => {
+        console.log(items)
+    })
+    // res.render("thanks");
+})

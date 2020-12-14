@@ -1,5 +1,4 @@
 const ChildModel = require("../models/child");
-const mongoose = require("mongoose");
 
 
 exports.createChild = (req, res) => {
@@ -23,6 +22,9 @@ exports.createChild = (req, res) => {
         }
 
         const newEntry = result._id;
-        res.redirect("/displayChildInThanks", newEntry);
+        res.redirect(`/displayChildInThanks?id=${newEntry}`);
     });
 };
+
+exports.displayPosts = (req, res)=> {
+    ChildModel.find((err, posts) => {res.render("blog", { blogPosts: posts });});};

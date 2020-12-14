@@ -1,7 +1,25 @@
 extends layout.pug
 
 block header
-    title Hello
-block content
     h1 #{greeting}
-    p Hello you scrunchy dogs
+
+block content
+
+    h1 Welcome to this Wintry Webpage!
+
+    h2#christmasClock
+
+    img(src="/media/techsanta.jpg" class="homeImg" onload="loadClock()")
+
+    h3 Santa's jumped on the internet superhighway and he is loving every second
+    
+    script(src="christmastime.js")
+    script.
+        function loadClock(){
+            const christmasClock = document.getElementById("christmasClock")
+            christmasClock.innerHTML = getChristmastime()
+            setInterval( () => {
+            christmasClock.innerHTML = getChristmastime()
+        }, 1000)
+        }
+
